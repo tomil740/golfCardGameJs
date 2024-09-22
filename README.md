@@ -1,13 +1,13 @@
-golf game readMe:
+# golf game readMe:
 
-Basic game/“project” description :
+## Basic game/“project” description :
 A two-player game includes one deck of cards each player gets 4 cards and through the game, he needs to collect the highest score hand of cards to win, the game ends when a player exposes all of his cards through his actions…
 
-the implementation method:
+## the implementation method:
 basic setup:
 declaring local variables to store the generally used Ingredients for the game, which will be initialized at the game function when a game is starting
 
-the game function:
+## the game function:
 Each game will start by clearing all of the used general (outside scoped variables) and then back for a new game, a new pack of cards dealing the card to each player, and set up the player object with name and all of the objects as default (unexposed).
 
 *player/handCard objects*:
@@ -19,5 +19,5 @@ in the game loop:
 * on each turn, we will send the matched player to the “take-action” function that will supply all the possible actions and dialog to apply them 
 * at the end of each player action, we will display the current board according to the updates of the action
 
-game over condition:
+## game over condition:
 When coming out of the loop we will apply the “get hand score” function that will calculate the scores and accordingly, we will return the game-winner
