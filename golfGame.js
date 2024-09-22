@@ -2,6 +2,9 @@
 const ps = require("prompt-sync");
 const prompt = ps();
 
+/*
+General declartaion,"public scope argument through all the program..."
+*/
 //initalize matched array of 52 cards pack
 let theDeck = genarateDeck();
 //initalize an empty discard pile of cards 
@@ -12,6 +15,7 @@ let player2 = Player("player2",[]);
 
 //call the game function to start 
 playGame();
+
 
 /*
 play game: 
@@ -73,7 +77,13 @@ function playGame(){
 
 
 
-
+/*
+getHandScore:
+input: get a hand array of HandCard type objects
+the function will go over the values of each HandCard object and convert it according to the rule to its matched value in the score
+*we will check for edge case in the calculation (pairs and etc) and act accordingly as a rsult we will*
+return the matched hand score as a number!
+*/
 function getHandScore(hand){
     let valuesArray = [];
     for(let card of hand){
@@ -100,7 +110,6 @@ function getHandScore(hand){
         }
         valuesArray.push(baseVal);
     }
-    console.log("the values array : ",valuesArray)
     let theScore = 0; 
     //check for pairs to subtract them from the sum...
     for(let cardValue of valuesArray){
@@ -130,13 +139,17 @@ function getHandScore(hand){
 
 }
 
+/*
+printBoard:
+input: optional endResult boolean value will set to the function the end results option on sending it as true
+the function will take the players objects from the local scope (not as arguments) and print them as demanded ...
+*/
 function printBoard(endResults){
     console.log("- - -  Board - - -");
     console.log(`${player1.playerName}:  ${joinExposeHand(player1.hand,endResults)}`);
     console.log(`${player2.playerName}:  ${joinExposeHand(player2.hand,endResults)}`);
     console.log(`Discard pile Top card: ${discardPile[discardPile.length-1]}`);
 }
-
 function joinExposeHand(playerHand,endResults){
     let result = "";
     for(let item of playerHand){
@@ -225,6 +238,12 @@ function replaceCard(player,theCard){
     console.log(`Replacing ${cardToReplace} with ${theCard}`);
 }
 
+/*
+drawFromDeck
+will take out of the deck the top card
+if the deck is empty the cards must be in the discardPile then we will swap all of those back in the deck beside the top open card
+and make the draw action...
+*/
 function drawFromDeck(){
     let result = theDeck.pop()
     if(result == undefined){
@@ -238,7 +257,12 @@ function drawFromDeck(){
 }
 
 
-
+/*
+initalizeHand:
+will be used at the beging of the game to crate player hand in the game
+*edge cases*
+the deck couldnt be empty (start of the game...),must be 4 cards in it
+*/
 function initalizeHand(){
     const result = [];
     for(let i = 0; i < 4; i++){
@@ -249,6 +273,11 @@ function initalizeHand(){
 }
 
 
+/*
+takeRandomCardFromDeck:
+instade of shuffling the deck we will take random card from it on every pull with this matched function
+to make sure the cards are random...
+*/
 function takeRandomCardFromDeck(){
     let randomIndex = Math.floor(Math.random() * theDeck.length);
     const theCard = theDeck[randomIndex];
@@ -257,7 +286,11 @@ function takeRandomCardFromDeck(){
     return theCard;
 }
 
-
+/*
+genarateDeck:
+will create an array with the matched card names of regular pack of cards...
+and return it
+*/
 function genarateDeck(){
     const result = [];
     const symbols = ["Clubs","Diamonds","Hearts","Spades"];
@@ -279,6 +312,11 @@ function genarateDeck(){
     return result;
 }
 
+
+
+/*
+Helper object genarting function for our dynamic players 
+*/
 
 function Player(name,hand){
     const properties = {
