@@ -2,6 +2,11 @@
 const ps = require("prompt-sync");
 const prompt = ps();
 
+
+//base setup :
+
+
+
 /*
 General declartaion,"public scope argument through all the program..."
 */
@@ -65,7 +70,7 @@ function playGame(){
 
     console.log(`${player1.playerName}: ${player1Score}`);
     console.log(`${player2.playerName}: ${player2Score}`);
-    const theWinner = player1Score>player2Score ? player1.playerName : player2.playerName;
+    const theWinner = player1Score<player2Score ? player1.playerName : player2.playerName;
 
     console.log(`${theWinner} winds!`);
 
