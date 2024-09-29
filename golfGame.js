@@ -26,6 +26,8 @@ function playGame(){
   *  deal cards randomly from the current deck
   *  and setup the object with all of the needed data
 */
+    theDeck = genarateDeck();
+
     const name1 = prompt('Enter player 1 name: ');
     const theHand1 = initalizeHand()
     player1 = Player(name1,theHand1);
@@ -68,7 +70,9 @@ function playGame(){
     const theWinner = player1Score>player2Score ? player1.playerName : player2.playerName;
 
     console.log(`${theWinner} winds!`);
-
+}
+let playAgain = "";
+while(playAgain != "n"){
     const playAgain = prompt('play again? (y/n):');
     if(playAgain === "y"){
         playGame();
