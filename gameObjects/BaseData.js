@@ -9,7 +9,7 @@ export class BaseData{
     get theDeck(){
         return this.#theDeck;
     }
-
+ 
     get discardPile(){
         return this.#discardPile;
     }
@@ -46,13 +46,13 @@ export class BaseData{
     and make the draw action...
     */
     drawFromDeck(){
-        let result = theDeck.pop()
+        let result = this.theDeck.pop()
         if(result == undefined){
             const backToDeck = this.#discardPile.slice(0,this.#discardPile.length-2);
             this.#discardPile = this.#discardPile.slice(this.#discardPile.length-1);
             //shafle the deck
-            theDeck.push(backToDeck);
-            result = theDeck.pop();
+            this.theDeck.push(backToDeck);
+            result = this.theDeck.pop();
         }
         return result;
     }
@@ -98,6 +98,13 @@ export class BaseData{
             result.push(theCard);
         }
         return result;
+    }
+
+    takeFromDiscardPile(){
+        if(this.#discardPile.length < 1){
+            this.#discardPile.push(this.takeRandomCardFromDeck());
+        }
+        return this.#discardPile.pop();
     }
 
 }

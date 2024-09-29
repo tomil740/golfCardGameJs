@@ -1,9 +1,15 @@
 export class Player{
     #name;
     #hand;
-    constructor(name,hand){
+    #prompt;
+    constructor(name,hand,prompt){
         this.#name = name;
         this.#hand = hand;
+        this.#prompt = prompt;
+    }
+
+    get prompt(){
+        return this.#prompt;
     }
 
     get name(){
@@ -35,20 +41,26 @@ export class Player{
         return result;
     }
 
-    replaceCard(player,theCard){
-        let theUserPick = prompt('choose which card to replace (1->4):');
-    
-        while(theUserPick != 1 && theUserPick != 2 && theUserPick != 3 && theUserPick != 4){
-            console.log("eValid input please enter again");
-            theUserPick = prompt('choose which card to replace:');
-        }
-    
-        const cardToReplace = player.hand[(theUserPick-1)].value;
-        discardPile.push(cardToReplace);
-        this.#hand[(theUserPick-1)] = {
+    replaceCard(theCard){
+        const theUserPick = this.fourOptionsPick('choose which card to replace (1->4):')
+
+        const cardToReplace = this.hand[(theUserPick-1)].value;
+        this.hand[(theUserPick-1)] = {
             toExpose : theCard,
             value : theCard
         };
         console.log(`Replacing ${cardToReplace} with ${theCard}`);
+        return cardToReplace;
+    }
+
+    fourOptionsPick(message){
+        let theUserPick = this.prompt(message);
+    
+        while(theUserPick != 1 && theUserPick != 2 && theUserPick != 3 && theUserPick != 4){
+            console.log("eValid input please enter again");
+            theUserPick = this.prompt(message);
+        }
+
+        return theUserPick;
     }
 }
