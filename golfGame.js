@@ -72,7 +72,7 @@ function playGame(){
     console.log(`${player2.playerName}: ${player2Score}`);
     const theWinner = player1Score<player2Score ? player1.playerName : player2.playerName;
 
-    console.log(`${theWinner} winds!`);
+    console.log(`${theWinner} wins!`);
 
     const playAgain = prompt('play again? (y/n):');
     if(playAgain === "y"){
@@ -89,7 +89,7 @@ the function will go over the values of each HandCard object and convert it acco
 *we will check for edge case in the calculation (pairs and etc) and act accordingly as a rsult we will*
 return the matched hand score as a number!
 */
-function getHandScore(hand){
+ function getHandScore(hand){
     let valuesArray = [];
     for(let card of hand){
         let baseVal = card.value[0];

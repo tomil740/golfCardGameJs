@@ -62,6 +62,9 @@ function playGame(){
         //check if the game ends:
         }while(!game.isAllOpen())
 
+        //ending the game and decalring the winner
+            
+
 }
 
 while(playAgain != "n"){

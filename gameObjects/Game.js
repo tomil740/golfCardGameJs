@@ -135,6 +135,17 @@ export class Game{
         }
         return isAllOpen;
     }
+    /*
+      will calculate the hands values with the matched objects functions ...
+      and accordingly will declare our winner
+    */
+    fineshGame(){
+        const player1HandScore = this.#player1.getHandScore();
+        const player2HandScore = this.#player2.getHandScore();
+
+        
+
+    }
 
 
 
